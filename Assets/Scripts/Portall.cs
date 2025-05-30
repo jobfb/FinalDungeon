@@ -10,6 +10,7 @@ public class Portall : Collidable
         if (coll.name == "Player")
         {
             //teleport the player
+            GameManager.instance.SaveState();
             string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
             SceneManager.LoadScene(sceneName);
         }

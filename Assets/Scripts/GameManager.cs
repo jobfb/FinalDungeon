@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject); // Keep this object across scenes
+            SceneManager.sceneLoaded += LoadState;
         }
         else
         {
@@ -34,12 +37,29 @@ public class GameManager : MonoBehaviour
 
     //save and load state
     public void SaveState()
-    {       
-        Debug.Log("Saving game state...");
+    {
+        string s = "";
+        s += "0" + "|";// Placeholder for future save data
+        s += pesos.ToString() + "|"; // Save pesos
+        s += experience.ToString() + "|"; // Save experience
+        s += "0"; // Placeholder for future save data
+        PlayerPrefs.SetString("SaveState", s); // Save the game state as a string
+
+        //  Debug.Log("Saving game state...");
     }
 
-    public void LoadState()
+    public void LoadState(Scene s, LoadSceneMode mode)
     {
+        if(!PlayerPrefs.HasKey("SaveState"))
+            {
+            return; // Check if save state exists
+        }
+        string[] data = PlayerPrefs.GetString("SaveState").Split('|');// split string
+        // change player skin
+        //Amount of pesos
+        pesos = int.Parse(data[1]);
+        experience = int.Parse(data[2]);
+
         Debug.Log("Loading game state...");
 
     }
