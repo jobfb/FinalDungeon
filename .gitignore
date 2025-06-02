@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Library
+/UserSettings
+/ProjectSettings
+/Assets/TextMesh Pro
+/Temp
+/0x72_16x16DungeonTileset.v5.zip
+/Assembly-CSharp.csproj
