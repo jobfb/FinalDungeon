@@ -29,10 +29,19 @@ public class GameManager : MonoBehaviour
 
     //references
     public Player player; // Reference to the player script
+    public FloatingTextManager floatingTextManager;
 
     //logic
     public int pesos; // Player's currency
     public int experience; // Player's experience points
+
+    //Floating text
+    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float durantion)
+    {
+        floatingTextManager.Show(msg, fontSize, color, position, motion, durantion);
+    }
+
+
 
 
     //save and load state
