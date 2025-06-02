@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Fighter
 {
     private BoxCollider2D boxCollider;
-    private Vector2 moveDelta;
+    private Vector3 moveDelta;
     private RaycastHit2D hit;
 
     private void Start()
