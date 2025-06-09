@@ -53,7 +53,7 @@ public class Weapon : Collidable
 
             // Apply damage to the target
             coll.SendMessage("ReceiveDamage", dmg); // Send the damage message to the target
-            Debug.Log(coll.name);        
+                 
                 
             
         }
