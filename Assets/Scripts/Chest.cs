@@ -14,6 +14,7 @@ public class Chest : Collectable
         {
             collected = true; // mark as collected
             GetComponent<SpriteRenderer>().sprite = emptyChest; // Change the sprite to the empty chest
+            GameManager.instance.pesos+= pesosAmount; // Add pesos to the player's total
             GameManager.instance.ShowText("+" + pesosAmount + " Pesos!", 25, Color.yellow, transform.position, Vector3.up * 25, 1.5f); // Show floating text
         }
     }

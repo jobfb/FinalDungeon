@@ -601,10 +601,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSprites: []
-  weapon: []
-  weaponPrices: 
+  weapon:
+  - {fileID: 4840290972086889215, guid: b1fc1437383fc634488e33dfc2918e65, type: 3}
+  - {fileID: -6804814063583718313, guid: b1fc1437383fc634488e33dfc2918e65, type: 3}
+  - {fileID: -6848334295082469151, guid: b1fc1437383fc634488e33dfc2918e65, type: 3}
+  - {fileID: -5139836902402569518, guid: b1fc1437383fc634488e33dfc2918e65, type: 3}
+  - {fileID: -5686649958548786699, guid: b1fc1437383fc634488e33dfc2918e65, type: 3}
+  - {fileID: 420665028, guid: b1fc1437383fc634488e33dfc2918e65, type: 3}
+  - {fileID: -2132626574, guid: b1fc1437383fc634488e33dfc2918e65, type: 3}
+  - {fileID: -360212062, guid: b1fc1437383fc634488e33dfc2918e65, type: 3}
+  weaponPrices: 1e000000460000008200000096000000b4000000c8000000dc000000
   xpTable: 
   player: {fileID: 8410912652608977908}
+  Weapon: {fileID: 505035540}
   floatingTextManager: {fileID: 247035247}
   pesos: 0
   experience: 0
@@ -938,7 +947,7 @@ GameObject:
   - component: {fileID: 333699013}
   - component: {fileID: 333699012}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: UpgradeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1007,7 +1016,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 333699013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 909560516}
+        m_TargetAssemblyTypeName: CharacterMenu, Assembly-CSharp
+        m_MethodName: OnUpgradeClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &333699013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1515,8 +1536,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damagePoint: 1
-  pushForce: 4
+  damagePoint: 
+  pushForce: []
   weaponLevel: 0
 --- !u!61 &505035541
 BoxCollider2D:
@@ -1753,6 +1774,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Show
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 909560516}
+        m_TargetAssemblyTypeName: CharacterMenu, Assembly-CSharp
+        m_MethodName: UpdateMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &742910032
@@ -11050,6 +11083,7 @@ GameObject:
   - component: {fileID: 909560510}
   - component: {fileID: 909560515}
   - component: {fileID: 909560514}
+  - component: {fileID: 909560516}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -11175,6 +11209,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &909560516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909560509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 978a1987b694a5443a88de23bbc063cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 1437768277}
+  hitpointText: {fileID: 1985337847}
+  pesosText: {fileID: 139793297}
+  upgradeCostText: {fileID: 2141601629}
+  xpText: {fileID: 1453887036}
+  characterSelectionSprite: {fileID: 2142209121}
+  weaponSprite: {fileID: 600634803}
+  xpBar: {fileID: 1470367009}
 --- !u!1 &1128966203
 GameObject:
   m_ObjectHideFlags: 0

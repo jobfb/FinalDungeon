@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Collidable : MonoBehaviour
 {
-    public ContactFilter2D filter; // This is the filter that will be used to determine what colliders are considered for collision detection.
+    public ContactFilter2D filter;
     private BoxCollider2D boxCollider;
-    private Collider2D[] hits = new Collider2D[10]; // Array to hold colliders detected by the filter.
+    private List<Collider2D> hits = new List<Collider2D>(); // Use a List instead of a fixed array
 
     protected virtual void Start()
     {
@@ -15,25 +14,22 @@ public class Collidable : MonoBehaviour
 
     protected virtual void Update()
     {
-        //collision work/detection
-        boxCollider.Overlap(filter, hits);  // look if there is some collision and put the results in the hits array
-        for (int i = 0; i < hits.Length; i++)
+        hits.Clear(); // Clear the list before each update
+        boxCollider.Overlap(filter, hits); // Look for collisions and store the results in the hits list
+
+        foreach (var hit in hits) // Iterate over the detected hits
         {
-            if (hits[i] == null)
+            if (hit == null)
             {
                 continue;
             }
 
-            OnCollide(hits[i]); // Call the OnCollide method with the detected collider
-
-            hits[i] = null; // Set the hit collider to null to clean up the array
+            OnCollide(hit); // Call the OnCollide method with the detected collider
         }
     }
 
-
-
     protected virtual void OnCollide(Collider2D coll)
     {
-        Debug.Log("OnCollide was not implemented in " + this.name); 
+        Debug.Log("OnCollide was not implemented in " + this.name);
     }
 }

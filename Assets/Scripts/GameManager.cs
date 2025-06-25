@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     //references
     public Player player; // Reference to the player script
+    public Weapon Weapon; // Reference to the weapon script
     public FloatingTextManager floatingTextManager;
 
     //logic
@@ -40,8 +41,23 @@ public class GameManager : MonoBehaviour
     {
         floatingTextManager.Show(msg, fontSize, color, position, motion, durantion);
     }
-
-
+    //Upgrade Weapon
+    public bool TryUpgradeWeapon()
+    {
+        //is the weapon max level?
+        if (Weapon.weaponLevel >= weaponPrices.Count - 1)
+        {
+            ShowText("Weapon is already at max level!", 20, Color.red, player.transform.position, Vector3.zero, 2f);
+            return false; // Cannot upgrade if already at max level
+        }
+        if(pesos>= weaponPrices[Weapon.weaponLevel])
+        {
+            pesos -= weaponPrices[Weapon.weaponLevel]; // Deduct the cost of the upgrade
+            Weapon.UpgradeWeapon(); // Upgrade the weapon
+            return true; // Upgrade successful
+        }
+        return false;
+    }
 
 
     //save and load state
